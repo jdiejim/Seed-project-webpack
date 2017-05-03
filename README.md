@@ -11,18 +11,19 @@
 project
 │   README.md
 |   package.json
-│   webpack.config.js   
+│   webpack.config.js
+|   node_modules  
 │
 └───build
 │   │   index.html
+|   |   app.bundle.js
+|   |   app.bundle.js.map
 |
 └───src
     │   index.js
     |   index.scss
     └───app
         │   app.js
-        └───assets
-        |
         └───components
 ```
 
