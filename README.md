@@ -24,8 +24,6 @@ project
         └───assets
         |
         └───components
-        |
-        └───css
 ```
 
 ### Install
@@ -59,16 +57,19 @@ npm install --save babel-runtime
 Add in package.json:
 
 ```Json
-{
   "babel": {
-      "presets": [
-        "env"
-      ],
-      "plugins": [
-        "transform-runtime"
-      ]
-    }
-  }
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      ["transform-runtime", {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }]
+    ]
+  },
 ```
 
 **presets-env:** If you want to use ES6
@@ -92,10 +93,13 @@ Add in webpack.config.js:
 var path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index.js'),
+  context: path.join(__dirname, 'src'),
+  entry: {
+    app: './index.js'
+  },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'app.bundle.js'
+    filename: '[name].bundle.js'
   },
   devtool: 'source-map',
   module: {
@@ -127,6 +131,8 @@ module.exports = {
       }
     ]
   }
+ }
+
 ```
 **entry:** The file you want to convert
 
@@ -169,7 +175,7 @@ Add script in package.json
 
 ```Json
 "scripts": {
-  "start": "webpack-dev-server"
+  "start": "webpack-dev-server --open"
 }
 ```
 Run script to start server
@@ -186,37 +192,49 @@ http://localhost:8080/webpack-dev-server
 ### package.json
 ```Json
 {
-  "name": "name-of-project",
+  "name": "project-webpack",
   "version": "1.0.0",
-  "description": "",
+  "description": "* This is a project skeleton for developing in ES6 with Webpack * To setup, run npm install and start coding! * Additional guide included if you are interested on the steps I followed to setup the environmnet for the seed project",
   "main": "webpack.config.js",
   "babel": {
     "presets": [
       "env"
     ],
     "plugins": [
-      "transform-runtime"
+      ["transform-runtime", {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }]
     ]
   },
   "scripts": {
-    "start": "webpack --watch"
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdiejim/Seed-project-webpack.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdiejim/Seed-project-webpack/issues"
+  },
+  "homepage": "https://github.com/jdiejim/Seed-project-webpack#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.4.0",
+    "babel-runtime": "^6.23.0",
     "css-loader": "^0.28.1",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.5"
-  },
-  "dependencies": {
-    "babel-runtime": "^6.23.0"
   }
 }
 ```
@@ -226,10 +244,13 @@ http://localhost:8080/webpack-dev-server
 var path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index.js'),
+  context: path.join(__dirname, 'src'),
+  entry: {
+    app: './index.js'
+  },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'app.bundle.js'
+    filename: '[name].bundle.js'
   },
   devtool: 'source-map',
   module: {

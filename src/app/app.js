@@ -1,1 +1,2 @@
-console.log('hi');
+const test = 'Success'
+document.getElementById('test').innerHTML = test;
