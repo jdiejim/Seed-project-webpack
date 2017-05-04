@@ -2,8 +2,7 @@
 
 * This is a project skeleton for developing in ES6 with Webpack
 * To setup, run npm install and start coding!
-* Additional guide included if you are interested on the steps I followed to setup the environmnet for the seed project
-
+* Additional guide included if you are interested on the steps I followed to setup the environment
 
 ## File Structure
 
@@ -12,7 +11,7 @@ project
 │   README.md
 |   package.json
 │   webpack.config.js
-|   node_modules  
+|   node_modules (after npm install)
 │
 └───build
 │   │   index.html
@@ -32,7 +31,8 @@ project
 ```Terminal
 npm install
 ```
-stat coding!
+
+#### Start coding!
 
 ### This is how I set up the project:
 
