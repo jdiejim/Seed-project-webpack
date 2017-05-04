@@ -1,7 +1,7 @@
 # Webpack/ES6 Seed
 
 * This is a project skeleton for developing in ES6 with Webpack
-* To setup, run npm install and start coding!
+* To setup, run npm install, remove remote origin, and start coding!
 * Additional guide included if you are interested on the steps I followed to setup the environment
 
 ## File Structure
@@ -30,6 +30,7 @@ project
 
 ```Terminal
 npm install
+git remote rm origin
 ```
 
 #### Start coding!
